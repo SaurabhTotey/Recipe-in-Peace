@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_password_validation, only: [:create, :update, :destroy]
 
   # GET /recipes
   # GET /recipes.json
@@ -27,12 +28,17 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
 
     respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
-        format.json { render :show, status: :created, location: @recipe }
+      if @password_validated
+        if @recipe.save
+          format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
+          format.json { render :show, status: :created, location: @recipe }
+        else
+          format.html { render :new }
+          format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render :new }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        format.json { render json: 'Incorrect password', status: :unauthorized}
       end
     end
   end
@@ -67,8 +73,13 @@ class RecipesController < ApplicationController
       @recipe = Recipe.find(params[:id])
     end
 
+    # Sets the password_validated field based on whether the password query parameter is the correct password
+    def set_password_validation
+      @password_validated = (begin params[:recipe][:password] rescue '' end) == 'TestPassword'
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:name, :imageURL, :description, :ingredients, :steps, :utensils, :minTime, :maxTime)
+      params.require(:recipe).permit(:name, :imageURL, :description, :ingredients, :steps, :utensils, :minTime, :maxTime, :password).except(:password)
     end
 end
