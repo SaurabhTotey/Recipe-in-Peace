@@ -47,12 +47,17 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1.json
   def update
     respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe }
+      if @password_validated
+        if @recipe.update(recipe_params)
+          format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
+          format.json { render :show, status: :ok, location: @recipe }
+        else
+          format.html { render :edit }
+          format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render :edit }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        format.json { render json: 'Incorrect password', status: :unauthorized }
       end
     end
   end
@@ -60,10 +65,15 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
-    @recipe.destroy
     respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
-      format.json { head :no_content }
+      if @password_validated
+        @recipe.destroy
+        format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to recipes_url, notice: 'Incorrect password.' }
+        format.json { render json: 'Incorrect password', status: :unauthorized }
+      end
     end
   end
 
