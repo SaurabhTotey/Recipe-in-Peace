@@ -1,90 +1,65 @@
 <%= form_with(model: recipe, local: true) do |form| %>
-  <% if recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-
-      <ul>
-      <% recipe.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+  <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
+  <div>
     <%= form.label :imageURL %>
     <%= form.text_field :imageURL %>
   </div>
 
-  <div class="field">
+  <div>
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
+  <div>
     <%= form.label :ingredients %>
     <%= form.text_field :ingredients %>
   </div>
 
-  <div class="field">
+  <div>
     <%= form.label :steps %>
     <%= form.text_field :steps %>
   </div>
 
-  <div class="field">
+  <div>
     <%= form.label :utensils %>
     <%= form.text_field :utensils %>
   </div>
 
-  <div class="field">
+  <div>
     <%= form.label :minTime %>
     <%= form.number_field :minTime %>
   </div>
 
-  <div class="field">
+  <div>
     <%= form.label :maxTime %>
     <%= form.number_field :maxTime %>
   </div>
 
-  <div class="field">
+  <div>
     <%= form.label :password %>
     <%= form.password_field :password %>
   </div>
 
-  <div class="actions">
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
 
 
 <% if @recipe.persisted? %>
-
   <br/>
 
   <%= form_with(model: recipe, local: true) do |form| %>
-    <% if recipe.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-
-        <ul>
-          <% recipe.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="field">
+    <div>
       <%= form.label :password %>
       <%= form.password_field :password %>
     </div>
 
-    <div class="actions">
+    <div>
       <%= button_to('Destroy', recipe_path(@recipe), method: :delete, remote: true)%>
     </div>
   <% end %>
