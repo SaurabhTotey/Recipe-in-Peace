@@ -12,7 +12,7 @@
             <% if recipe.imageURL && recipe.imageURL != '' %>
               <img class="img-fluid img-thumbnail rounded d-block recipe-image" src='<%= recipe.imageURL %>' width="350" height="350"/>
             <% else %>
-              <div class="recipe-image"></div>
+              <img class="img-fluid img-thumbnail rounded d-block recipe-image" src='<%= path_to_image('QuestionMark.png') %>' width="350" height="350"/>
             <% end %>
             <h4><%= recipe.name %></h4>
           </a>
