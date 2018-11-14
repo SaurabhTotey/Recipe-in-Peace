@@ -28,11 +28,22 @@
     <% end %>
     <% i += 1 %>
   <% end %>
-  <% if i % 4 != 0 %>
-    </div>
+  <% if i % 4 == 0 %>
+    <div class="row mt-3">
   <% end %>
+  <div class="col col-3">
+    <div class="rounded recipe-card">
+      <br/>
+      <div class="d-flex justify-content-center">
+        <a href='<%= new_recipe_path %>'>
+          <img class="img-fluid img-thumbnail rounded d-block recipe-image" src='<%= path_to_image('Plus.png') %>' width="350" height="350"/>
+          <h4>Add Recipe</h4>
+        </a>
+      </div>
+      <div class="row">
+        <p class="col col-12">Click Here to Add a New Recipe!</p>
+      </div>
+    </div>
+  </div>
+    </div>
 </div>
-
-<br/>
-
-<%= link_to 'New Recipe', new_recipe_path %>
