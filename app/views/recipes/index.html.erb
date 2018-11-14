@@ -6,17 +6,21 @@
     <% end %>
     <div class="col col-3">
       <div class="rounded recipe-card">
+        <br/>
         <div class="d-flex justify-content-center">
           <a href='<%= recipe_path(recipe) %>'>
             <% if recipe.imageURL && recipe.imageURL != '' %>
-              <img class="img-fluid img-thumbnail rounded d-block" src='<%= recipe.imageURL %>' width="350" height="350"/>
+              <img class="img-fluid img-thumbnail rounded d-block recipe-image" src='<%= recipe.imageURL %>' width="350" height="350"/>
             <% else %>
-              <div></div>
+              <div class="recipe-image"></div>
             <% end %>
             <h4><%= recipe.name %></h4>
           </a>
         </div>
-        <p><%= recipe.description %> <a href='<%= edit_recipe_path(recipe) %>'>Edit</a></p>
+        <div class="row">
+          <p class="col col-10"><%= recipe.description %></p>
+          <a class="col col-2" href='<%= edit_recipe_path(recipe) %>'>Edit</a>
+        </div>
       </div>
     </div>
     <% if i % 4 == 3 %>
