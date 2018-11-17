@@ -1,7 +1,69 @@
 <%= render 'recipes/returnButton' %>
 
-<h1>New Recipe</h1>
+<br/>
 
-<%= render 'form', recipe: @recipe %>
+<div class="d-flex justify-content-center">
+  <h1>New Recipe</h1>
+</div>
+
+<br/>
+
+<div class="container">
+
+  <h4>Name</h4>
+  <input type="text" title="Name"/>
+
+  <br/>
+  <br/>
+
+  <h4>Image URL</h4>
+  <input type="text" title="ImageURL">
+
+  <br/>
+  <br/>
+
+  <h4>Recipe Description</h4>
+  <textarea title="Description"></textarea>
+
+  <br/>
+  <br/>
+
+  <h4>Ingredients</h4>
+  <div class="ingredients-resizable-list">
+    <!-- TODO: make -->
+  </div>
+
+  <br/>
+  <br/>
+
+  <h4>Steps</h4>
+  <div class="steps-resizable-list">
+    <!-- TODO: make -->
+  </div>
+
+  <br/>
+  <br/>
+
+  <h4>Utensils</h4>
+  <div class="utensils-resizable-list">
+    <!-- TODO: make -->
+  </div>
+
+  <br/>
+  <br/>
+
+  <h4>Preparation Time</h4>
+  <p><input type="number" title="minTime"/>minutes &#8804; Preparation Time &#8804; <input type="number" title="maxTime"/>minutes</p>
+
+  <br/>
+  <br/>
+
+  <h4>Password</h4>
+  <input type="password" title="password"/>
+
+  <br/>
+  <br/>
+
+</div>
 
 <%= render 'recipes/returnButton' %>
