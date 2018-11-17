@@ -3,7 +3,7 @@
 <br/>
 
 <div class="d-flex justify-content-center">
-  <h1>New Recipe</h1>
+  <h1>New Recipe: <span id="recipe-name-display"></span></h1>
 </div>
 
 <br/>
@@ -11,25 +11,25 @@
 <div class="container">
 
   <h4>Name</h4>
-  <input type="text" title="Name"/>
+  <input type="text" title="Name" id="name-field"/>
 
   <br/>
   <br/>
 
   <h4>Image URL</h4>
-  <input type="text" title="ImageURL">
+  <input type="text" title="Image URL" id="imageurl-field">
 
   <br/>
   <br/>
 
   <h4>Recipe Description</h4>
-  <textarea title="Description"></textarea>
+  <textarea title="Description" id="description-field"></textarea>
 
   <br/>
   <br/>
 
   <h4>Ingredients</h4>
-  <div class="ingredients-resizable-list">
+  <div id="ingredients-list" class="resizable-list list-unordered">
     <!-- TODO: make -->
   </div>
 
@@ -37,7 +37,7 @@
   <br/>
 
   <h4>Steps</h4>
-  <div class="steps-resizable-list">
+  <div id="steps-list" class="resizable-list list-ordered">
     <!-- TODO: make -->
   </div>
 
@@ -45,7 +45,7 @@
   <br/>
 
   <h4>Utensils</h4>
-  <div class="utensils-resizable-list">
+  <div id="utensils-list" class="resizable-list list-unordered">
     <!-- TODO: make -->
   </div>
 
@@ -53,13 +53,13 @@
   <br/>
 
   <h4>Preparation Time</h4>
-  <p><input type="number" title="minTime"/>minutes &#8804; Preparation Time &#8804; <input type="number" title="maxTime"/>minutes</p>
+  <p><input type="number" title="Minimum Time" id="mintime-field" value="15"/>minutes &#8804; Preparation Time &#8804; <input type="number" title="Maximum Time" id="maxtime-field" value="60"/>minutes</p>
 
   <br/>
   <br/>
 
   <h4>Password</h4>
-  <input type="password" title="password"/>
+  <input type="password" title="Password" id="password-field"/>
 
   <br/>
   <br/>
