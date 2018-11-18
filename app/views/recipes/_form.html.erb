@@ -81,21 +81,19 @@
   <br/>
 
   <h4>Utensils</h4>
-  <div id="utensils-list" class="resizable-list">
-    <ul>
-      <% if recipe_exists %>
-        <% @recipe.utensils.each {|utensil| %>
-          <li>
-            <input type="text" title="Utensil" value='<%= utensil %>'/>
-            <!-- TODO: way to delete this utensil -->
-          </li>
-        <% } %>
-      <% end %>
-      <li>
-        <input type="text" title="Utensil"/>
-        <!-- TODO: way to delete this utensil -->
-      </li>
-    </ul>
+  <div id="utensils-list" class="resizable-list row">
+    <div class="col">
+      <button class="btn w-100">Fork</button>
+    </div>
+    <div class="col">
+      <button class="btn w-100">Spoon</button>
+    </div>
+    <div class="col">
+      <button class="btn w-100">Knife</button>
+    </div>
+    <div class="col">
+      <button class="btn w-100">Hands</button>
+    </div>
   </div>
 
   <br/>
