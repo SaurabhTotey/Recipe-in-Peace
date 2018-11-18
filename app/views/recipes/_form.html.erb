@@ -1,65 +1,74 @@
-<%= form_with(model: recipe, local: true) do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<div class="d-flex justify-content-center">
+  <h1><%= @submit_action_name %>: <span id="recipe-name-display"></span></h1>
+</div>
 
-  <div>
-    <%= form.label :imageURL %>
-    <%= form.text_field :imageURL %>
-  </div>
+<br/>
 
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+<div class="container">
 
-  <div>
-    <%= form.label :ingredients %>
-    <%= form.text_field :ingredients %>
-  </div>
+  <h4>Name</h4>
+  <input type="text" title="Name" id="name-field" class="w-100"/>
 
-  <div>
-    <%= form.label :steps %>
-    <%= form.text_field :steps %>
-  </div>
-
-  <div>
-    <%= form.label :utensils %>
-    <%= form.text_field :utensils %>
-  </div>
-
-  <div>
-    <%= form.label :minTime %>
-    <%= form.number_field :minTime %>
-  </div>
-
-  <div>
-    <%= form.label :maxTime %>
-    <%= form.number_field :maxTime %>
-  </div>
-
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
-
-<% if @recipe.persisted? %>
+  <br/>
   <br/>
 
-  <%= form_with(model: recipe, local: true) do |form| %>
-    <div>
-      <%= form.label :password %>
-      <%= form.password_field :password %>
-    </div>
+  <h4>Image URL</h4>
+  <input type="text" title="Image URL" id="imageurl-field" class="w-100">
+  <br/>
+  <br/>
+  <div class="d-flex justify-content-center">
+    <img src='<%= path_to_image('QuestionMark.png') %>' id="recipe-preview-image" width="600" height="600">
+  </div>
 
-    <div>
-      <%= button_to('Destroy', recipe_path(@recipe), method: :delete, remote: true)%>
-    </div>
-  <% end %>
-<% end %>
+  <br/>
+  <br/>
+
+  <h4>Description</h4>
+  <textarea title="Description" id="description-field" class="w-100" rows="5"></textarea>
+
+  <br/>
+  <br/>
+
+  <div class="d-flex justify-content-center">
+    <p><input type="number" title="Minimum Time" id="mintime-field" value="15"/>minutes <span id="preparation-time-label">&#8804; Preparation Time &#8804;</span> <input type="number" title="Maximum Time" id="maxtime-field" value="60"/>minutes</p>
+  </div>
+
+  <br/>
+  <br/>
+
+  <h4>Ingredients</h4>
+  <div id="ingredients-list" class="resizable-list list-unordered">
+    <!-- TODO: make -->
+  </div>
+
+  <br/>
+  <br/>
+
+  <h4>Steps</h4>
+  <div id="steps-list" class="resizable-list list-ordered">
+    <!-- TODO: make -->
+  </div>
+
+  <br/>
+  <br/>
+
+  <h4>Utensils</h4>
+  <div id="utensils-list" class="resizable-list list-unordered">
+    <!-- TODO: make -->
+  </div>
+
+  <br/>
+  <br/>
+
+  <div class="form-submit">
+    <h4>Submit</h4>
+    <input type="password" title="Password" id="password-field"/>&nbsp;&nbsp;<button class="btn btn-primary" type="submit"><%= @submit_action_name %></button>
+  </div>
+
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+</div>

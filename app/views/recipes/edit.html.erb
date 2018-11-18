@@ -1,6 +1,8 @@
-<h1>Editing Recipe</h1>
+<%= render 'recipes/returnButton' %>
 
-<%= render 'form', recipe: @recipe %>
+<br/>
 
-<%= link_to 'Show', @recipe %> |
-<%= link_to 'Back', recipes_path %>
+<% @submit_action_name = "Edit Recipe" %>
+<%= render 'recipes/form', recipe: @recipe %>
+
+<%= render 'recipes/returnButton' %>
