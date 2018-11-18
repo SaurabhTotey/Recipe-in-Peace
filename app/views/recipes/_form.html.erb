@@ -7,13 +7,13 @@
 <div class="container">
 
   <h4>Name</h4>
-  <input type="text" title="Name" id="name-field" class="w-100"/>
+  <input type="text" title="Name" id="name-field" class="w-100" value='<%= @recipe? @recipe.name : "" %>'/>
 
   <br/>
   <br/>
 
   <h4>Image URL</h4>
-  <input type="text" title="Image URL" id="imageurl-field" class="w-100">
+  <input type="text" title="Image URL" id="imageurl-field" class="w-100" value='<%= @recipe? @recipe.imageURL : "" %>'>
   <br/>
   <br/>
   <div class="d-flex justify-content-center">
@@ -24,13 +24,13 @@
   <br/>
 
   <h4>Description</h4>
-  <textarea title="Description" id="description-field" class="w-100" rows="5"></textarea>
+  <textarea title="Description" id="description-field" class="w-100" rows="5"><%= @recipe? @recipe.description : "" %></textarea>
 
   <br/>
   <br/>
 
   <div class="d-flex justify-content-center">
-    <p><input type="number" title="Minimum Time" id="mintime-field" value="15"/>minutes <span id="preparation-time-label">&#8804; Preparation Time &#8804;</span> <input type="number" title="Maximum Time" id="maxtime-field" value="60"/>minutes</p>
+    <p><input type="number" title="Minimum Time" id="mintime-field" value='<%= @recipe? @recipe.minTime : "15" %>'/>minutes <span id="preparation-time-label">&#8804; Preparation Time &#8804;</span> <input type="number" title="Maximum Time" id="maxtime-field" value='<%= @recipe? @recipe.maxTime : "60" %>'/>minutes</p>
   </div>
 
   <br/>
