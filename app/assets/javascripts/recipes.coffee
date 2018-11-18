@@ -15,5 +15,5 @@ window.onload = ( ->
 
   if $("#utensils-list")
     buttonIds = ["fork", "spoon", "knife", "hands"].map((utensil) -> "#" + utensil + "-selection-button")
-    buttonIds.forEach((id) -> $(id).click((event) -> $(id).toggleClass("selected-utensil")))
+    buttonIds.forEach((id) -> $(id).on("click", (event) -> $(id).toggleClass("selected-utensil")))
 )
