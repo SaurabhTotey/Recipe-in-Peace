@@ -18,9 +18,9 @@
             <h4><%= recipe.name %></h4>
           </a>
         </div>
-        <div class="row">
+        <div class="row w-100">
           <p class="col col-10"><%= recipe.description %></p>
-          <a class="col col-2" href='<%= edit_recipe_path(recipe) %>'>Edit</a>
+          <a class="col col-2" href='<%= edit_recipe_path(recipe) %>'><%= icon("fas", "edit") %></a>
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@
         </a>
       </div>
       <div class="row">
-        <p class="col col-12">Click Here to Add a New Recipe!</p>
+        <p class="col col-12">Click Above to Add a New Recipe!</p>
       </div>
     </div>
   </div>

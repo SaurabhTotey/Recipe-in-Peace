@@ -29,6 +29,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.1.3'
 # Use JQuery for BootStrap
 gem 'jquery-rails', '~> 4.3.1'
+# Use to build FontAwesome
+gem 'rake'
+# Use FontAwesome for icons
+gem 'font-awesome-sass', '~> 5.5.0'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
