@@ -11,22 +11,31 @@
 <div class="container">
 
   <h4>Name</h4>
-  <input type="text" title="Name" id="name-field"/>
+  <input type="text" title="Name" id="name-field" class="w-100"/>
 
   <br/>
   <br/>
 
   <h4>Image URL</h4>
-  <input type="text" title="Image URL" id="imageurl-field">
+  <input type="text" title="Image URL" id="imageurl-field" class="w-100">
   <br/>
   <br/>
-  <img src='<%= path_to_image('QuestionMark.png') %>' id="recipe-preview-image" width="700" height="700px">
+  <div class="d-flex justify-content-center">
+    <img src='<%= path_to_image('QuestionMark.png') %>' id="recipe-preview-image" width="600" height="600">
+  </div>
 
   <br/>
   <br/>
 
-  <h4>Recipe Description</h4>
-  <textarea title="Description" id="description-field"></textarea>
+  <h4>Description</h4>
+  <textarea title="Description" id="description-field" class="w-100" rows="5"></textarea>
+
+  <br/>
+  <br/>
+
+  <div class="d-flex justify-content-center">
+    <p><input type="number" title="Minimum Time" id="mintime-field" value="15"/>minutes <span id="preparation-time-label">&#8804; Preparation Time &#8804;</span> <input type="number" title="Maximum Time" id="maxtime-field" value="60"/>minutes</p>
+  </div>
 
   <br/>
   <br/>
@@ -55,15 +64,14 @@
   <br/>
   <br/>
 
-  <h4>Preparation Time</h4>
-  <p><input type="number" title="Minimum Time" id="mintime-field" value="15"/>minutes &#8804; Preparation Time &#8804; <input type="number" title="Maximum Time" id="maxtime-field" value="60"/>minutes</p>
+  <div class="form-submit">
+    <h4>Submit</h4>
+    <input type="password" title="Password" id="password-field"/>&nbsp;&nbsp;<button class="btn btn-primary" type="submit">Add Recipe</button>
+  </div>
 
   <br/>
   <br/>
-
-  <h4>Password</h4>
-  <input type="password" title="Password" id="password-field"/>
-
+  <br/>
   <br/>
   <br/>
 

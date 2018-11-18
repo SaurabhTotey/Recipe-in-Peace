@@ -5,4 +5,7 @@ window.onload = ( ->
   if $("#recipe-preview-image")
     defaultUnknownImage = $("#recipe-preview-image").attr("src")
     $("#imageurl-field").on("propertychange change click keyup input paste", -> $("#recipe-preview-image").attr("src", if $("#imageurl-field").val() then $("#imageurl-field").val() else defaultUnknownImage))
+
+  if $("#preparation-time-label")
+    $("#preparation-time-label").css("font-size", $("#mintime-field").height() + "px")
 )
