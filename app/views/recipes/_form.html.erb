@@ -1,3 +1,5 @@
+<% recipe_exists = Recipe.exists?(id: @recipe.id) %>
+
 <div class="d-flex justify-content-center">
   <h1><%= @submit_action_name %>: <span id="recipe-name-display"></span></h1>
 </div>
@@ -7,13 +9,13 @@
 <div class="container">
 
   <h4>Name</h4>
-  <input type="text" title="Name" id="name-field" class="w-100" value='<%= @recipe? @recipe.name : "" %>'/>
+  <input type="text" title="Name" id="name-field" class="w-100" value='<%= recipe_exists ? @recipe.name : "" %>'/>
 
   <br/>
   <br/>
 
   <h4>Image URL</h4>
-  <input type="text" title="Image URL" id="imageurl-field" class="w-100" value='<%= @recipe? @recipe.imageURL : "" %>'>
+  <input type="text" title="Image URL" id="imageurl-field" class="w-100" value='<%= recipe_exists ? @recipe.imageURL : "" %>'>
   <br/>
   <br/>
   <div class="d-flex justify-content-center">
@@ -24,13 +26,13 @@
   <br/>
 
   <h4>Description</h4>
-  <textarea title="Description" id="description-field" class="w-100" rows="5"><%= @recipe? @recipe.description : "" %></textarea>
+  <textarea title="Description" id="description-field" class="w-100" rows="5"><%= recipe_exists ? @recipe.description : "" %></textarea>
 
   <br/>
   <br/>
 
   <div class="d-flex justify-content-center">
-    <p><input type="number" title="Minimum Time" id="mintime-field" value='<%= @recipe? @recipe.minTime : "15" %>'/>minutes <span id="preparation-time-label">&#8804; Preparation Time &#8804;</span> <input type="number" title="Maximum Time" id="maxtime-field" value='<%= @recipe? @recipe.maxTime : "60" %>'/>minutes</p>
+    <p><input type="number" title="Minimum Time" id="mintime-field" value='<%= recipe_exists ? @recipe.minTime : 15 %>'/>minutes <span id="preparation-time-label">&#8804; Preparation Time &#8804;</span> <input type="number" title="Maximum Time" id="maxtime-field" value='<%= recipe_exists ? @recipe.maxTime : 60 %>'/>minutes</p>
   </div>
 
   <br/>
@@ -39,7 +41,7 @@
   <h4>Ingredients</h4>
   <div id="ingredients-list" class="resizable-list">
     <ul>
-      <% if @recipe %>
+      <% if recipe_exists %>
         <% @recipe.ingredients.each {|ingredient| %>
           <li>
             <input type="text" title="Ingredient" value='<%= ingredient %>'/>
@@ -60,7 +62,7 @@
   <h4>Steps</h4>
   <div id="steps-list" class="resizable-list">
     <ol>
-      <% if @recipe %>
+      <% if recipe_exists %>
         <% @recipe.steps.each {|step| %>
           <li>
             <input type="text" title="Step" value='<%= step %>'/>
@@ -81,7 +83,7 @@
   <h4>Utensils</h4>
   <div id="utensils-list" class="resizable-list">
     <ul>
-      <% if @recipe %>
+      <% if recipe_exists %>
         <% @recipe.utensils.each {|utensil| %>
           <li>
             <input type="text" title="Utensil" value='<%= utensil %>'/>
