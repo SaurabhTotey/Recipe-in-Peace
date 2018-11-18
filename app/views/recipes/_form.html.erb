@@ -37,24 +37,63 @@
   <br/>
 
   <h4>Ingredients</h4>
-  <div id="ingredients-list" class="resizable-list list-unordered">
-    <!-- TODO: make -->
+  <div id="ingredients-list" class="resizable-list">
+    <ul>
+      <% if @recipe %>
+        <% @recipe.ingredients.each {|ingredient| %>
+          <li>
+            <input type="text" title="Ingredient" value='<%= ingredient %>'/>
+            <!-- TODO: way to delete this ingredient -->
+          </li>
+        <% } %>
+      <% end %>
+      <li>
+        <input type="text" title="Ingredient"/>
+        <!-- TODO: way to delete this ingredient -->
+      </li>
+    </ul>
   </div>
 
   <br/>
   <br/>
 
   <h4>Steps</h4>
-  <div id="steps-list" class="resizable-list list-ordered">
-    <!-- TODO: make -->
+  <div id="steps-list" class="resizable-list">
+    <ol>
+      <% if @recipe %>
+        <% @recipe.steps.each {|step| %>
+          <li>
+            <input type="text" title="Step" value='<%= step %>'/>
+            <!-- TODO: way to delete this step -->
+          </li>
+        <% } %>
+      <% end %>
+      <li>
+        <input type="text" title="Step"/>
+        <!-- TODO: way to delete this step -->
+      </li>
+    </ol>
   </div>
 
   <br/>
   <br/>
 
   <h4>Utensils</h4>
-  <div id="utensils-list" class="resizable-list list-unordered">
-    <!-- TODO: make -->
+  <div id="utensils-list" class="resizable-list">
+    <ul>
+      <% if @recipe %>
+        <% @recipe.utensils.each {|utensil| %>
+          <li>
+            <input type="text" title="Utensil" value='<%= utensil %>'/>
+            <!-- TODO: way to delete this utensil -->
+          </li>
+        <% } %>
+      <% end %>
+      <li>
+        <input type="text" title="Utensil"/>
+        <!-- TODO: way to delete this utensil -->
+      </li>
+    </ul>
   </div>
 
   <br/>
