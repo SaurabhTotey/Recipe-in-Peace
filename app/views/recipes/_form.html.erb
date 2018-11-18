@@ -83,16 +83,16 @@
   <h4>Utensils</h4>
   <div id="utensils-list" class="resizable-list row">
     <div class="col">
-      <button class="btn w-100">Fork</button>
+      <button class="btn w-100 <%= recipe_exists && @recipe.utensils.include?("Fork") ? "selected-utensil" : "" %>" id="fork-selection-button">Fork</button>
     </div>
     <div class="col">
-      <button class="btn w-100">Spoon</button>
+      <button class="btn w-100 <%= recipe_exists && @recipe.utensils.include?("Spoon") ? "selected-utensil" : "" %>" id="spoon-selection-button">Spoon</button>
     </div>
     <div class="col">
-      <button class="btn w-100">Knife</button>
+      <button class="btn w-100 <%= recipe_exists && @recipe.utensils.include?("Knife") ? "selected-utensil" : "" %>" id="knife-selection-button">Knife</button>
     </div>
     <div class="col">
-      <button class="btn w-100">Hands</button>
+      <button class="btn w-100 <%= recipe_exists && @recipe.utensils.include?("Hands") ? "selected-utensil" : "" %>" id="hands-selection-button">Hands</button>
     </div>
   </div>
 

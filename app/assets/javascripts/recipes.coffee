@@ -12,4 +12,8 @@ window.onload = ( ->
 
   if $("#preparation-time-label")
     $("#preparation-time-label").css("font-size", $("#mintime-field").height() + "px")
+
+  if $("#utensils-list")
+    buttonIds = ["fork", "spoon", "knife", "hands"].map((utensil) -> "#" + utensil + "-selection-button")
+    buttonIds.forEach((id) -> $(id).click((event) -> $(id).toggleClass("selected-utensil")))
 )
