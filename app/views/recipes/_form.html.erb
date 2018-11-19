@@ -43,13 +43,13 @@
     <ul>
       <% if recipe_exists %>
         <% @recipe.ingredients.each {|ingredient| %>
-          <li class="row">
+          <li>
             <input type="text" title="Ingredient" value='<%= ingredient %>' class="col col-10"/>
-            <a class="col col-2" href="javascript:;"><%= icon("fas", "trash") %></a>
+            <a class="col col-2 item-deleter" href="javascript:;"><%= icon("fas", "trash") %></a>
           </li>
         <% } %>
       <% end %>
-      <li class="row">
+      <li>
         <input type="text" title="Ingredient" class="col col-10"/>
         <a class="col col-2 item-deleter" href="javascript:;"><%= icon("fas", "trash") %></a>
       </li>
@@ -65,14 +65,14 @@
       <% if recipe_exists %>
         <% @recipe.steps.each {|step| %>
           <li>
-            <input type="text" title="Step" value='<%= step %>'/>
-            <!-- TODO: way to delete this step -->
+            <input type="text" title="Step" value='<%= step %>' class="col col-10"/>
+            <a class="col col-2 item-deleter" href="javascript:;"><%= icon("fas", "trash") %></a>
           </li>
         <% } %>
       <% end %>
       <li>
-        <input type="text" title="Step"/>
-        <!-- TODO: way to delete this step -->
+        <input type="text" title="Step" class="col col-10"/>
+        <a class="col col-2 item-deleter" href="javascript:;"><%= icon("fas", "trash") %></a>
       </li>
     </ol>
   </div>
