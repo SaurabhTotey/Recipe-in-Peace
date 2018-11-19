@@ -62,12 +62,12 @@ window.onload = ( ->
         method: method,
         headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'), 'Content-Type': 'application/json', 'Accept': 'application/json' }
         body: JSON.stringify({ recipe: formInformation })
-      }).then((response) -> return response.json()).then((response) ->
-        # TODO: this section doesn't work
+      }).then((response) ->
+        console.log(response)
         if response.ok
           window.location.href = "/"
         else
-          console.log("Oh no, submission error :O") # TODO better error handling
+          # TODO alert user of incorrect password
       )
     )
 )
