@@ -42,4 +42,32 @@ window.onload = ( ->
     itemDeleterActions.push(stepsListPopulator)
 
   $(".item-deleter").on("click", (event) -> self = this; itemDeleterActions.forEach((action) -> action.apply(self, [event])))
+
+  if $(".form-submit")
+    method = if $(".form-submit").find("button").first().text() == "Add Recipe" then "POST" else "PUT"
+    formatArray = (arrayToFormat) -> "{" + arrayToFormat.toString() + "}"
+    $(".form-submit").find("button").first().on("click", ->
+      formInformation = {
+        name: $("#name-field").val(),
+        imageURL: $("#imageurl-field").val(),
+        description: $("#description-field").val(),
+        ingredients: formatArray($("#ingredients-list").find("input").toArray().map((input) -> input.value).filter((value) -> value != "")),
+        steps: formatArray($("#steps-list").find("input").toArray().map((input) -> input.value).filter((value) -> value != "")),
+        utensils: formatArray($("#utensils-list").find(".selected-utensil").toArray().map((utensilButton) -> utensilButton.innerText)),
+        minTime: $("#mintime-field").val(),
+        maxTime: $("#maxtime-field").val(),
+        password: $("#password-field").val()
+      }
+      fetch(window.location.href.split("/").slice(0, -1).join("/"), {
+        method: method,
+        headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'), 'Content-Type': 'application/json', 'Accept': 'application/json' }
+        body: JSON.stringify({ recipe: formInformation })
+      }).then((response) -> return response.json()).then((response) ->
+        # TODO: this section doesn't work
+        if response.ok
+          window.location.href = "/"
+        else
+          console.log("Oh no, submission error :O") # TODO better error handling
+      )
+    )
 )
