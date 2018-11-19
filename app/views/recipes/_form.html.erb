@@ -43,15 +43,15 @@
     <ul>
       <% if recipe_exists %>
         <% @recipe.ingredients.each {|ingredient| %>
-          <li>
-            <input type="text" title="Ingredient" value='<%= ingredient %>'/>
-            <!-- TODO: way to delete this ingredient -->
+          <li class="row">
+            <input type="text" title="Ingredient" value='<%= ingredient %>' class="col col-10"/>
+            <a class="col col-2" href="javascript:;"><%= icon("fas", "trash") %></a>
           </li>
         <% } %>
       <% end %>
-      <li>
-        <input type="text" title="Ingredient"/>
-        <!-- TODO: way to delete this ingredient -->
+      <li class="row">
+        <input type="text" title="Ingredient" class="col col-10"/>
+        <a class="col col-2 item-deleter" href="javascript:;"><%= icon("fas", "trash") %></a>
       </li>
     </ul>
   </div>
