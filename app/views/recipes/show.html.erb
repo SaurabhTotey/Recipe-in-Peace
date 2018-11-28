@@ -1,42 +1,26 @@
-<p>
-  <strong>Name:</strong>
-  <%= @recipe.name %>
-</p>
+<%= render 'recipes/returnButton' %>
 
-<p>
-  <strong>ImageURL:</strong>
-  <%= @recipe.imageURL %>
-</p>
+<br/>
 
-<p>
-  <strong>Description:</strong>
-  <%= @recipe.description %>
-</p>
+<div class="d-flex justify-content-center">
+  <h1><%= @recipe.name %></h1>
+</div>
 
-<p>
-  <strong>Ingredients:</strong>
-  <%= @recipe.ingredients %>
-</p>
+<div class="d-flex justify-content-center">
+  <img src='<%= @recipe.imageURL %>' id="recipe-preview-image" width="600" height="600">
+</div>
 
-<p>
-  <strong>Steps:</strong>
-  <%= @recipe.steps %>
-</p>
+<br/>
 
-<p>
-  <strong>Utensils:</strong>
-  <%= @recipe.utensils %>
-</p>
+<div class="container">
 
-<p>
-  <strong>MinTime:</strong>
-  <%= @recipe.minTime %>
-</p>
+  <h3>Description</h3>
+  <p><%= @recipe.description %></p>
 
-<p>
-  <strong>MaxTime:</strong>
-  <%= @recipe.maxTime %>
-</p>
+  <div class="d-flex justify-content-center">
+    <p><%= @recipe.minTime %> minutes <span id="preparation-time-label">&#8804; Preparation Time &#8804;</span> <%= @recipe.maxTime %> minutes</p>
+  </div>
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
+</div>
+
+<%= render 'recipes/returnButton' %>

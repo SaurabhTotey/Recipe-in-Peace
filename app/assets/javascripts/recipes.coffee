@@ -1,25 +1,28 @@
 window.onload = ( ->
-  if $("#recipe-name-display")
+  if $("#recipe-name-display").length
     nameDisplayAction = -> $("#recipe-name-display").text($("#name-field").val())
     nameDisplayAction()
     $("#name-field").on("propertychange change click keyup input paste", nameDisplayAction )
 
-  if $("#recipe-preview-image")
+  if $("#recipe-preview-image").length
     defaultUnknownImage = $("#recipe-preview-image").attr("src")
     recipePreviewImageAction = -> $("#recipe-preview-image").attr("src", if $("#imageurl-field").val() then $("#imageurl-field").val() else defaultUnknownImage)
     recipePreviewImageAction()
     $("#imageurl-field").on("propertychange change click keyup input paste", recipePreviewImageAction )
 
   if $("#preparation-time-label")
-    $("#preparation-time-label").css("font-size", $("#mintime-field").height() + "px")
+    if $("#mintime-field").length
+      $("#preparation-time-label").css("font-size", $("#mintime-field").height() + "px")
+    else
+      $("#preparation-time-label").css("font-size", "30px")
 
-  if $("#utensils-list")
+  if $("#utensils-list").length
     buttonIds = ["fork", "spoon", "knife", "hands"].map((utensil) -> "#" + utensil + "-selection-button")
     buttonIds.forEach((id) -> $(id).on("click", (event) -> $(id).toggleClass("selected-utensil")))
 
   itemDeleterActions = [(event) -> $(this).closest("li").remove()]
 
-  if $("#ingredients-list")
+  if $("#ingredients-list").length
     newIngredientListItemTemplate = $("#ingredients-list").find("li").last().clone()
     ingredientsListPopulator = (event) ->
       if !$("#ingredients-list").find("input").toArray().some((inputField) -> inputField.value == "")
@@ -30,7 +33,7 @@ window.onload = ( ->
     $("#ingredients-list").find("input").on("propertychange change click keyup input paste", ingredientsListPopulator)
     itemDeleterActions.push(ingredientsListPopulator)
 
-  if $("#steps-list")
+  if $("#steps-list").length
     newIngredientListItemTemplate = $("#steps-list").find("li").last().clone()
     stepsListPopulator = (event) ->
       if !$("#steps-list").find("input").toArray().some((inputField) -> inputField.value == "")
@@ -43,7 +46,7 @@ window.onload = ( ->
 
   $(".item-deleter").on("click", (event) -> self = this; itemDeleterActions.forEach((action) -> action.apply(self, [event])))
 
-  if $(".form-submit")
+  if $(".form-submit").length
     method = if $(".form-submit").find("button").first().text() == "Add Recipe" then "POST" else "PUT"
     formatArray = (arrayToFormat) -> "{" + arrayToFormat.toString() + "}"
     $(".form-submit").find("button").first().on("click", ->
@@ -71,7 +74,7 @@ window.onload = ( ->
       )
     )
 
-  if $("#delete-button")
+  if $("#delete-button").length
     $("#delete-button").on("click", ->
       fetch(window.location.href.split("/").slice(0, -1).join("/"), {
         method: "DELETE",
