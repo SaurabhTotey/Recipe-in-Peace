@@ -70,4 +70,19 @@ window.onload = ( ->
           # TODO alert user of incorrect password
       )
     )
+
+  if $("#delete-button")
+    $("#delete-button").on("click", ->
+      fetch(window.location.href.split("/").slice(0, -1).join("/"), {
+        method: "DELETE",
+        headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'), 'Content-Type': 'application/json', 'Accept': 'application/json' }
+        body: JSON.stringify({ recipe: { password: $("#password-field").val() } })
+      }).then((response) ->
+        console.log(response)
+        if response.ok
+          window.location.href = "/"
+        else
+          # TODO alert user of incorrect password
+      )
+    )
 )

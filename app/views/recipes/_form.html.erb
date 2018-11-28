@@ -95,6 +95,9 @@
   <div class="form-submit">
     <h4>Submit</h4>
     <input type="password" title="Password" id="password-field"/>&nbsp;&nbsp;<button class="btn btn-primary" type="submit"><%= @submit_action_name %></button>
+    <% if @submit_action_name == "Edit Recipe" %>
+      &nbsp;&nbsp;<button class="btn btn-danger" type="submit" id="delete-button">Delete</button>
+    <% end %>
   </div>
 
   <br/>
