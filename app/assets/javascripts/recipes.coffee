@@ -14,7 +14,7 @@ window.onload = ( ->
     if $("#mintime-field").length
       $("#preparation-time-label").css("font-size", $("#mintime-field").height() + "px")
     else
-      $("#preparation-time-label").css("font-size", "30px")
+      $("#preparation-time-label").css("font-size", "25px")
 
   if $("#utensils-list").length
     buttonIds = ["fork", "spoon", "knife", "hands"].map((utensil) -> "#" + utensil + "-selection-button")

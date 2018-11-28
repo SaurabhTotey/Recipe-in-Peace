@@ -14,13 +14,45 @@
 
 <div class="container">
 
-  <h3>Description</h3>
+  <h4>Description</h4>
   <p><%= @recipe.description %></p>
 
   <div class="d-flex justify-content-center">
     <p><%= @recipe.minTime %> minutes <span id="preparation-time-label">&#8804; Preparation Time &#8804;</span> <%= @recipe.maxTime %> minutes</p>
   </div>
 
+  <h4>Ingredients</h4>
+  <ul>
+    <% @recipe.ingredients.each {|ingredient| %>
+      <li><%= ingredient %></li>
+    <% } %>
+  </ul>
+
+  <h4>Steps</h4>
+  <ol>
+    <% @recipe.steps.each {|step| %>
+      <li><%= step %></li>
+    <% } %>
+  </ol>
+
+  <h4>Utensils</h4>
+  <div id="utensils-list" class="row">
+    <% %w(Fork Spoon Knife Hands).each do |utensil|  %>
+      <div class="col">
+        <div class='alert w-100 utensil-display <%= @recipe.utensils.include?(utensil) ? "selected-utensil" : "" %>'><%= utensil %></div>
+      </div>
+    <% end %>
+  </div>
+
+  <br/>
+  <br/>
+  <br/>
+
+  <a class="btn btn-secondary btn-block" role="button" href="<%= edit_recipe_path %>">Edit</a>
+
 </div>
+
+<br/>
+<br/>
 
 <%= render 'recipes/returnButton' %>
