@@ -72,7 +72,7 @@ window.onload = ( ->
         body: JSON.stringify({ recipe: formInformation })
       }).then((response) ->
         if response.ok
-          window.location.href = "/"
+          response.text().then((body) -> window.location.href = "/" + JSON.parse(body).id)
         else
           alertWrongPassword()
       )
