@@ -92,6 +92,15 @@
   <br/>
   <br/>
 
+  <div class="container">
+    <div id="incorrect-password-notification" class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none">
+      <span>There was an issue with the submission. Please check your password.</span>
+      <button type="button" class="close" id="incorrect-password-notification-close-button" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
   <div class="form-submit">
     <h4>Submit</h4>
     <input type="password" title="Password" id="password-field"/>&nbsp;&nbsp;<button class="btn btn-primary" type="submit"><%= @submit_action_name %></button>

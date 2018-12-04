@@ -46,6 +46,11 @@ window.onload = ( ->
 
   $(".item-deleter").on("click", (event) -> self = this; itemDeleterActions.forEach((action) -> action.apply(self, [event])))
 
+  alertWrongPassword = () -> $("#incorrect-password-notification").css("display", "")
+
+  if $("#incorrect-password-notification-close-button").length
+    $("#incorrect-password-notification-close-button").on("click", (event) -> $("#incorrect-password-notification").css("display", "none"))
+
   if $(".form-submit").length
     method = if $(".form-submit").find("button").first().text() == "Add Recipe" then "POST" else "PUT"
     formatArray = (arrayToFormat) -> "{" + arrayToFormat.toString() + "}"
@@ -66,11 +71,10 @@ window.onload = ( ->
         headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'), 'Content-Type': 'application/json', 'Accept': 'application/json' }
         body: JSON.stringify({ recipe: formInformation })
       }).then((response) ->
-        console.log(response)
         if response.ok
           window.location.href = "/"
         else
-          # TODO alert user of incorrect password
+          alertWrongPassword()
       )
     )
 
@@ -81,11 +85,10 @@ window.onload = ( ->
         headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'), 'Content-Type': 'application/json', 'Accept': 'application/json' }
         body: JSON.stringify({ recipe: { password: $("#password-field").val() } })
       }).then((response) ->
-        console.log(response)
         if response.ok
           window.location.href = "/"
         else
-          # TODO alert user of incorrect password
+          alertWrongPassword()
       )
     )
 )
